@@ -1,0 +1,36 @@
+//哈希方案
+std::vector<int> twoSum2(std::vector<int>& nums, int target) {
+      
+    std::vector<int> ans;
+    std::map<int, int> tempMap;
+    for (int i = 0; i< nums.size();i++) {
+        int p = target - nums[i];
+        if (tempMap.find(p) != tempMap.end()) {
+            ans.push_back(tempMap[p]);
+            ans.push_back(i);
+            return ans;
+        }
+        tempMap[nums[i]]=i;
+    }
+    
+    return ans;
+}
+//暴力破解
+std::vector<int> twoSum(int arr[],int lenght, int target){
+    
+    std::vector<int> ans;
+    
+    for (int i=0; i < lenght -1; i++) {
+        
+        for (int j =1; j< lenght; j++) {
+            
+            if ( (arr[i]+ arr[j]) == target) {
+                ans.push_back(i);
+                ans.push_back(j);
+                return ans;
+            }
+        }
+    }
+    
+    return  ans;
+}
