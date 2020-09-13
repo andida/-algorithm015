@@ -1,0 +1,27 @@
+class Solution {
+
+    vector<vector<int>> result;
+    vector<int> res;
+public:
+    vector<vector<int>> permute(vector<int>& nums) {
+        backTrack(nums);
+        return result;
+    }
+
+    void backTrack(vector<int>& nums){
+
+        if(res.size() == nums.size()){
+            result.push_back(res);
+            return ;
+        }
+        for(int i = 0; i< nums.size(); i++){
+            if(find(res.begin(), res.end(), nums[i]) == res.end()) {
+                res.push_back(nums[i]);
+                backTrack(nums);
+                res.pop_back();
+            }
+            
+        }
+
+    }
+};
